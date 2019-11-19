@@ -1,9 +1,11 @@
-let state = { count: 0 };
+let state;
 
-function changeState(state, action) {
+//Because changeState() has a default argument, the state argument is set to { count: 0 }.
+function changeState(state = { count: 0 }, action) {
   switch (action.type) {
     case "INCREASE_COUNT":
       return { count: state.count + 1 };
+
     default:
       return state;
   }
@@ -18,7 +20,5 @@ function render() {
   document.body.textContent = state.count;
 }
 
-dispatch({ type: "INCREASE_COUNT" });
-dispatch({ type: "INCREASE_COUNT" });
-dispatch({ type: "INCREASE_COUNT" });
+dispatch({ type: "@@INIT" });
 dispatch({ type: "INCREASE_COUNT" });
